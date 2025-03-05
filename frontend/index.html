@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mask Editor</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-controller="global">
+    <div id="appContainer">
+      <div id="toolbar">
+        <button data-action="click->global#openImagesFolder">Open Images Folder</button>
+        <div>
+          <button data-action="click->global#nextImage" data-dx="-1">Prev</button>
+          <button data-action="click->global#nextImage" data-dx="1">Next</button>
+        </div>
+                
+        <div>
+          <label for="brushSize">Brush Size:</label>
+          <input type="range" id="brushSize" data-global-target="brushSize" value="5" min="1" max="50"
+                  data-action="input->global#updateBrushSize"/>
+        </div>
+
+        <div>
+          <label for="annotationClass">Class:</label>
+          <select id="annotationClass" data-global-target="annotationInput"
+                                       data-action="change->global#updateAnnotationClass"></select>
+        </div>
+
+        <button data-action="click->global#undoAction">Undo</button>
+        <button data-action="click->global#saveMask">Save Mask</button>
+      </div>
+      <div id="mainContent">
+        <div id="canvasContainer" data-controller="image drawing">
+          <img id="bgImage" data-image-target="image" alt="Loaded Image" />
+          <canvas id="maskCanvas" data-drawing-target="canvas"></canvas>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="main.js" defer></script>
+  </body>
+</html>

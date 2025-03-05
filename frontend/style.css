@@ -1,0 +1,67 @@
+#appContainer {
+    display: grid;
+    grid-template-columns: 200px auto;
+    grid-template-rows: 100vh;
+    width: 100vw;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+}
+
+#toolbar {
+    z-index: 10;
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 10px; /* Adds spacing between elements */
+    width: 200px; /* Set a fixed width */
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-right: 2px solid #ccc;
+}
+
+/* #mainContent { */
+/*     flex-grow: 1; */
+/*     position: relative; */
+/*     padding: 10px; */
+/*     box-sizing: border-box; */
+/*     display: flex; */
+/*     justify-content: center; */
+/*     align-items: center; */
+/* } */
+
+#canvasContainer {
+    z-index: 1;
+    grid-column: 2;
+    grid-row: 1;
+    flex-grow: 1;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    overflow: hidden;
+    background-color: #222;
+    width: 100%;
+    height: 100vh;
+}
+
+#bgImage,
+#maskCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#bgImage {
+    display: none;
+}
